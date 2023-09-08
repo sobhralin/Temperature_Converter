@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #c5b489;
+        }
+        #converter {
+            margin: 20px auto;
+            padding: 20px;
+            width: 300px;
+            background-color: #594005;
+            border-radius: 5px;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #c3ceda;
+            color: #4589ab;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="converter">
+        <h2>Temperature Converter</h2>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius">
+        <button onclick="convertTemperature()">Convert</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            if (!isNaN(celsius)) {
+                const fahrenheit = (celsius * 9/5) + 32;
+                const kelvin = celsius + 273.15;
+
+                const results = `Fahrenheit: ${fahrenheit.toFixed(2)}°F<br> Kelvin: ${kelvin.toFixed(2)}K`;
+                document.getElementById('results').innerHTML = results;
+            } else {
+                document.getElementById('results').innerHTML = 'Please enter a valid temperature.';
+            }
+        }
+    </script>
+</body>
+</html>
